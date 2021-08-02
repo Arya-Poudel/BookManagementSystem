@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 exports.book_list = (req, res, next) => {
 	Book.find({}).exec((err, bookList) => {
 		if (err) {
-			return next(err);
+			return res.status(500).json({message: 'Internal error'})
 		}
 		res.status(200).json({ booklist: bookList });
 	});
@@ -32,7 +32,7 @@ exports.create_book = [
 
 		Book.findOne({ ISBN: req.body.ISBN }, (err, result) => {
 			if (err) {
-				return next(err);
+				return res.status(500).json({message: 'Internal error'})
 			}
 			if (result) {
 				return res
@@ -47,7 +47,7 @@ exports.create_book = [
 
 				book.save((err) => {
 					if (err) {
-						return next(err);
+						return res.status(500).json({message: 'Internal error'})
 					}
 					return res.status(200).json({ message: "Book saved" });
 				});
@@ -84,7 +84,7 @@ exports.update_book = [
 		//update the book
 		Book.findByIdAndUpdate(req.params.id, book, {}, (err) => {
 			if (err) {
-				return next(err);
+				return res.status(500).json({message: 'Internal error'})
 			}
 			return res.status(200).json({ message: "Book updated" });
 		});
@@ -94,7 +94,7 @@ exports.update_book = [
 exports.delete_book = (req, res, next) => {
 	Book.findByIdAndRemove(req.params.id, function deleteBook(err) {
 		if (err) {
-			return next(err);
+			return res.status(500).json({message: 'Internal error'})
 		}
 		res.status(200).json({ message: "Book deleted" });
 	});
