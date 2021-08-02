@@ -1,0 +1,21 @@
+{
+  "name": "bookmanagementsystem",
+  "version": "1.0.0",
+  "description": "restful api for book management system",
+  "main": "index.js",
+  "scripts": {
+    "devstart" : "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "mongoose": "^5.13.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
